@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+*.sqlite3
+backend/media/
+backend/staticfiles/
+
+# Node
+node_modules/
+frontend/dist/
+
+# Entorno (NO versionar credenciales reales)
+.env
+!.env.example
+
+# IDE / SO
+.vscode/*
+!.vscode/extensions.json
+.DS_Store

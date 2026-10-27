@@ -1,0 +1,432 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Escalado de fuentes según selección */
+html[data-font-size="small"] {
+  font-size: 14px;
+}
+
+html[data-font-size="medium"] {
+  font-size: 16px;
+}
+
+html[data-font-size="large"] {
+  font-size: 18px;
+}
+
+@layer base {
+  body { 
+    @apply bg-slate-50 text-slate-800 antialiased transition-colors duration-200; 
+  }
+
+  /* Fondo general en modo oscuro */
+  .dark-mode,
+  .dark-mode body,
+  body.dark-mode {
+    @apply bg-slate-950 text-slate-100;
+  }
+
+  /* Encabezados legibles en modo oscuro */
+  h1, h2, h3, h4, h5, h6 { 
+    @apply text-duoc-blue; 
+  }
+
+  .dark-mode h1, .dark-mode h2, .dark-mode h3,
+  .dark-mode h4, .dark-mode h5, .dark-mode h6 { 
+    color: #ffffff !important;
+  }
+
+  /* Header en Modo Oscuro */
+  .dark-mode header {
+    background-color: #0f172a !important; /* slate-900 */
+    border-color: #1e293b !important;
+  }
+
+  /* Sidebar base */
+  aside {
+    @apply bg-duoc-blue;
+  }
+
+  /* Mapeo general de textos azulosos a celeste brillante (excluyendo el Sidebar) */
+  .dark-mode *:not(aside *):not([class*="bg-duoc-yellow"] *):not([class*="bg-yellow-"] *):not([class*="bg-amber-"] *).text-duoc-blue {
+    color: #38bdf8 !important; /* sky-400 */
+  }
+
+  /* Área de arrastrar / adjuntar archivo */
+  .dark-mode [class*="border-dashed"] {
+    background-color: #0f172a !important;
+    border-color: #334155 !important;
+  }
+
+  /* ---------------------------------------------------- */
+  /* ESTILO TARJETAS DE DENUNCIA Y ALERTAS                */
+  /* ---------------------------------------------------- */
+
+  .dark-mode .bg-blue-50,
+  .dark-mode .bg-sky-50 {
+    background-color: #0f172a !important;
+    border: 1px solid #38bdf8 !important;
+    color: #f8fafc !important;
+  }
+
+  .dark-mode .bg-blue-50 *,
+  .dark-mode .bg-sky-50 * {
+    color: #f8fafc !important;
+  }
+
+  /* Tarjeta SELECCIONADA de denuncia */
+  .dark-mode [role="button"][class*="border-duoc-blue"],
+  .dark-mode button[class*="border-duoc-blue"],
+  .dark-mode div[class*="border-duoc-blue"] {
+    background-color: #0d2240 !important;
+    border: 2px solid #38bdf8 !important;
+  }
+
+  .dark-mode [role="button"][class*="border-duoc-blue"] h3,
+  .dark-mode [role="button"][class*="border-duoc-blue"] h4,
+  .dark-mode [role="button"][class*="border-duoc-blue"] p,
+  .dark-mode [role="button"][class*="border-duoc-blue"] span,
+  .dark-mode button[class*="border-duoc-blue"] h3,
+  .dark-mode button[class*="border-duoc-blue"] h4,
+  .dark-mode button[class*="border-duoc-blue"] p,
+  .dark-mode button[class*="border-duoc-blue"] span,
+  .dark-mode div[class*="border-duoc-blue"] h3,
+  .dark-mode div[class*="border-duoc-blue"] h4,
+  .dark-mode div[class*="border-duoc-blue"] p,
+  .dark-mode div[class*="border-duoc-blue"] span {
+    color: #f8fafc !important;
+  }
+
+  .dark-mode [role="button"][class*="border-duoc-blue"] h3,
+  .dark-mode button[class*="border-duoc-blue"] h3,
+  .dark-mode div[class*="border-duoc-blue"] h3,
+  .dark-mode [role="button"][class*="border-duoc-blue"] svg,
+  .dark-mode button[class*="border-duoc-blue"] svg,
+  .dark-mode div[class*="border-duoc-blue"] svg {
+    color: #38bdf8 !important;
+  }
+
+  /* Tarjeta NO SELECCIONADA */
+  .dark-mode [role="button"][class*="border-slate-"],
+  .dark-mode [role="button"][class*="border-gray-"],
+  .dark-mode button[class*="border-slate-"],
+  .dark-mode button[class*="border-gray-"] {
+    background-color: #0f172a !important;
+    border: 1px solid #334155 !important;
+  }
+
+  /* ---------------------------------------------------- */
+  /* TABLAS Y GRÁFICOS EN MODO OSCURO                    */
+  /* ---------------------------------------------------- */
+
+  .dark-mode thead,
+  .dark-mode thead tr,
+  .dark-mode thead th {
+    background-color: #0f172a !important;
+    color: #94a3b8 !important;
+    border-bottom: 1px solid #334155 !important;
+  }
+
+  .dark-mode tbody tr,
+  .dark-mode tbody tr.bg-white,
+  .dark-mode tbody tr.bg-slate-50,
+  .dark-mode tbody tr.bg-slate-100,
+  .dark-mode tbody tr:nth-child(even),
+  .dark-mode tbody tr:nth-child(odd) {
+    background-color: #0f172a !important;
+    border-bottom: 1px solid #1e293b !important;
+  }
+
+  .dark-mode tbody td,
+  .dark-mode tbody tr td,
+  .dark-mode tbody tr span {
+    color: #f1f5f9 !important;
+  }
+
+  .dark-mode tbody tr:hover {
+    background-color: #1e293b !important;
+  }
+
+  .dark-mode .recharts-default-tooltip,
+  .dark-mode .chartjs-tooltip {
+    background-color: #0f172a !important;
+    border: 1px solid #334155 !important;
+  }
+
+  .dark-mode .recharts-default-tooltip *,
+  .dark-mode .chartjs-tooltip * {
+    color: #ffffff !important;
+  }
+}
+
+@layer utilities {
+  /* ---------------------------------------------------- */
+  /* BARRA DE CAMBIO DE TONO Y TAMAÑO DE TEXTO            */
+  /* ---------------------------------------------------- */
+  .dark-mode [class*="bg-slate-100"],
+  .dark-mode [class*="bg-gray-100"],
+  .dark-mode [class*="bg-slate-200"] {
+    background-color: #1e293b !important; /* slate-800 */
+    border-color: #334155 !important;
+    color: #f8fafc !important;
+  }
+
+  .dark-mode [class*="bg-slate-100"] *,
+  .dark-mode [class*="bg-gray-100"] *,
+  .dark-mode [class*="bg-slate-200"] * {
+    color: #f8fafc;
+  }
+
+  /* Botones deshabilitados/secundarios dentro del selector de tono */
+  .dark-mode [class*="bg-slate-100"] button:not([class*="bg-"]),
+  .dark-mode [class*="bg-gray-100"] button:not([class*="bg-"]) {
+    color: #94a3b8 !important;
+  }
+
+  /* ---------------------------------------------------- */
+  /* CONTENEDORES, MENÚS DESPLEGABLES Y MODALES           */
+  /* ---------------------------------------------------- */
+
+  /* Fondo para dropdowns, menus y ventanas modales */
+  .dark-mode [class*="bg-white"],
+  .dark-mode .dropdown-menu,
+  .dark-mode [role="menu"],
+  .dark-mode [role="dialog"],
+  .dark-mode [data-radix-popper-content-wrapper] > div {
+    background-color: #0f172a !important; /* slate-900 */
+    border-color: #334155 !important;
+    color: #f8fafc !important;
+  }
+
+  /* Cajas contenedoras dentro de Modales (Fix textos invisibles tipo "Solicitud registrada") */
+  .dark-mode [role="dialog"] [class*="bg-slate-"],
+  .dark-mode [role="dialog"] [class*="bg-gray-"],
+  .dark-mode [role="dialog"] input,
+  .dark-mode [role="dialog"] textarea {
+    background-color: #1e293b !important; /* slate-800 */
+    border-color: #334155 !important;
+    color: #f8fafc !important;
+  }
+
+  .dark-mode [role="dialog"] p,
+  .dark-mode [role="dialog"] span,
+  .dark-mode [role="dialog"] div {
+    color: #f8fafc;
+  }
+
+  /* Items dentro de menús desplegables */
+  .dark-mode [role="menu"] a,
+  .dark-mode [role="menu"] button,
+  .dark-mode [role="menu"] div,
+  .dark-mode .dropdown-menu a,
+  .dark-mode .dropdown-menu button,
+  .dark-mode .dropdown-menu div {
+    background-color: transparent !important;
+    color: #f8fafc !important;
+  }
+
+  /* HOVER EN ELEMENTOS DE MENÚS DESPLEGABLES */
+  .dark-mode [role="menu"] a:hover,
+  .dark-mode [role="menu"] button:hover,
+  .dark-mode [role="menu"] div:hover,
+  .dark-mode .dropdown-menu a:hover,
+  .dark-mode .dropdown-menu button:hover,
+  .dark-mode .dropdown-menu div:hover {
+    background-color: #1e293b !important; /* Fondo slate-800 al hover */
+    color: #ffffff !important;
+  }
+
+  .dark-mode [role="menu"] a:hover *,
+  .dark-mode [role="menu"] button:hover *,
+  .dark-mode [role="menu"] div:hover *,
+  .dark-mode .dropdown-menu a:hover *,
+  .dark-mode .dropdown-menu button:hover *,
+  .dark-mode .dropdown-menu div:hover * {
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+  }
+
+  /* Botón "Cerrar sesión" */
+  .dark-mode [role="menu"] [class*="bg-red-"],
+  .dark-mode [role="menu"] [class*="bg-rose-"],
+  .dark-mode .dropdown-menu [class*="bg-red-"],
+  .dark-mode .dropdown-menu [class*="bg-rose-"] {
+    background-color: #881337 !important;
+    color: #ffffff !important;
+  }
+
+  .dark-mode [role="menu"] [class*="bg-red-"]:hover,
+  .dark-mode [role="menu"] [class*="bg-rose-"]:hover,
+  .dark-mode .dropdown-menu [class*="bg-red-"]:hover,
+  .dark-mode .dropdown-menu [class*="bg-rose-"]:hover {
+    background-color: #9f1239 !important;
+  }
+
+  /* ---------------------------------------------------- */
+  /* BADGES Y ETIQUETAS DE ESTADO                        */
+  /* ---------------------------------------------------- */
+
+  /* 1. Estado "Pagado" (Verde) */
+  .dark-mode [class*="bg-green-"],
+  .dark-mode [class*="bg-emerald-"] {
+    background-color: #064e3b !important;
+    color: #a7f3d0 !important;
+    border: 1px solid #059669 !important;
+  }
+  .dark-mode [class*="bg-green-"] *,
+  .dark-mode [class*="bg-emerald-"] * {
+    color: #a7f3d0 !important;
+  }
+
+  /* 2. Estado "Vencido" (Rojo fuera de menús) */
+  .dark-mode [class*="bg-red-"]:not([role="menu"] *):not(.dropdown-menu *),
+  .dark-mode [class*="bg-rose-"]:not([role="menu"] *):not(.dropdown-menu *) {
+    background-color: #881337 !important;
+    color: #fecdd3 !important;
+    border: 1px solid #e11d48 !important;
+  }
+  .dark-mode [class*="bg-red-"]:not([role="menu"] *):not(.dropdown-menu *) *,
+  .dark-mode [class*="bg-rose-"]:not([role="menu"] *):not(.dropdown-menu *) * {
+    color: #fecdd3 !important;
+  }
+
+  /* 3. Estado "Pendiente" (Ámbar / Amarillo) */
+  .dark-mode [class*="bg-amber-"],
+  .dark-mode [class*="bg-yellow-"] {
+    background-color: #78350f !important;
+    color: #fde68a !important;
+    border: 1px solid #d97706 !important;
+  }
+  .dark-mode [class*="bg-amber-"] *,
+  .dark-mode [class*="bg-yellow-"] * {
+    color: #fde68a !important;
+    stroke: #fde68a !important;
+  }
+
+  /* ---------------------------------------------------- */
+  /* CORRECCIÓN SIDEBAR Y BOTONES ACTIVOS                 */
+  /* ---------------------------------------------------- */
+
+  .dark-mode aside {
+    background-color: #0b192c !important;
+  }
+
+  /* Ítems NO seleccionados en Sidebar (Texto blanco/gris claro) */
+  .dark-mode aside nav a:not([class*="bg-duoc-yellow"]):not([class*="bg-yellow-"]):not([class*="bg-amber-"]),
+  .dark-mode aside nav button:not([class*="bg-duoc-yellow"]):not([class*="bg-yellow-"]):not([class*="bg-amber-"]) {
+    color: #f1f5f9 !important;
+  }
+
+  .dark-mode aside nav a:not([class*="bg-duoc-yellow"]):not([class*="bg-yellow-"]):not([class*="bg-amber-"]) *:not([class*="bg-duoc-yellow"] *),
+  .dark-mode aside nav button:not([class*="bg-duoc-yellow"]):not([class*="bg-yellow-"]):not([class*="bg-amber-"]) *:not([class*="bg-duoc-yellow"] *) {
+    color: #f1f5f9 !important;
+    stroke: #f1f5f9 !important;
+  }
+
+  /* Ítem SELECCIONADO (Fondo amarillo -> Texto e íconos siempre en azul oscuro / negro) */
+  aside [class*="bg-duoc-yellow"],
+  aside [class*="bg-yellow-"],
+  aside [class*="bg-amber-"],
+  aside [class*="bg-duoc-yellow"] *,
+  aside [class*="bg-yellow-"] *,
+  aside [class*="bg-amber-"] *,
+  .dark-mode aside [class*="bg-duoc-yellow"],
+  .dark-mode aside [class*="bg-yellow-"],
+  .dark-mode aside [class*="bg-amber-"],
+  .dark-mode aside [class*="bg-duoc-yellow"] *,
+  .dark-mode aside [class*="bg-yellow-"] *,
+  .dark-mode aside [class*="bg-amber-"] * {
+    background-color: #eab308 !important;
+    color: #0d2240 !important; /* Texto en azul oscuro/negro */
+  }
+
+  /* Íconos SVG del ítem seleccionado */
+  aside [class*="bg-duoc-yellow"] svg,
+  aside [class*="bg-yellow-"] svg,
+  aside [class*="bg-amber-"] svg,
+  .dark-mode aside [class*="bg-duoc-yellow"] svg,
+  .dark-mode aside [class*="bg-yellow-"] svg,
+  .dark-mode aside [class*="bg-amber-"] svg {
+    stroke: #0d2240 !important;
+    color: #0d2240 !important;
+    fill: none !important;
+  }
+
+  /* Hover en ítems NO seleccionados */
+  .dark-mode aside nav a:not([class*="bg-duoc-yellow"]):not([class*="bg-yellow-"]):not([class*="bg-amber-"]):hover,
+  .dark-mode aside nav button:not([class*="bg-duoc-yellow"]):not([class*="bg-yellow-"]):not([class*="bg-amber-"]):hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+  }
+}
+
+@layer components {
+  .card { 
+    @apply bg-white rounded-2xl shadow-card border border-slate-100 transition-colors duration-200; 
+  }
+  .dark-mode .card {
+    @apply bg-slate-900 border-slate-800 text-slate-100 shadow-none;
+  }
+
+  .btn { 
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-duoc-yellow disabled:opacity-50 disabled:cursor-not-allowed; 
+  }
+  
+  .btn-primary { 
+    @apply btn bg-duoc-blue text-white hover:bg-duoc-blue-700; 
+  }
+  .dark-mode .btn-primary {
+    @apply bg-amber-400 text-slate-950 hover:bg-amber-300 font-bold;
+  }
+  
+  .btn-accent { 
+    @apply btn bg-duoc-yellow text-duoc-blue hover:bg-duoc-yellow-600; 
+  }
+  
+  .btn-ghost { 
+    @apply btn bg-transparent text-duoc-blue hover:bg-duoc-blue-50; 
+  }
+  .dark-mode .btn-ghost {
+    @apply text-slate-200 hover:bg-slate-800;
+  }
+
+  .btn-outline { 
+    @apply btn border border-slate-300 bg-white text-slate-700 hover:border-duoc-blue hover:text-duoc-blue; 
+  }
+  .dark-mode .btn-outline {
+    @apply border-slate-700 bg-slate-900 text-slate-200 hover:border-amber-400 hover:text-amber-400;
+  }
+
+  .btn-danger { 
+    @apply btn bg-red-600 text-white hover:bg-red-700; 
+  }
+
+  .input { 
+    @apply w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm placeholder:text-slate-400 focus:border-duoc-blue focus:outline-none focus:ring-2 focus:ring-duoc-blue/20 disabled:bg-slate-100 transition-colors; 
+  }
+  .dark-mode .input {
+    @apply border-slate-700 bg-slate-800 text-slate-100 placeholder:text-slate-500 focus:border-amber-400 disabled:bg-slate-900;
+  }
+
+  .label { 
+    @apply mb-1.5 block text-sm font-medium text-slate-700; 
+  }
+  .dark-mode .label {
+    @apply text-slate-200;
+  }
+
+  .table-th { 
+    @apply px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500; 
+  }
+  .dark-mode .table-th {
+    @apply text-slate-400;
+  }
+
+  .table-td { 
+    @apply px-4 py-3 text-sm text-slate-700; 
+  }
+  .dark-mode .table-td {
+    @apply text-slate-300;
+  }
+}

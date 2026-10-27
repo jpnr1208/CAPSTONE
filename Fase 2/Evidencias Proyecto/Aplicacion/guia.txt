@@ -1,0 +1,9 @@
+source venv/bin/activate
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py seed_data
+(abrir de forma integrada en carpeta frontend) npm install
+# en caso de problemas con el runserver
+# npm run dev -- --host // localhost
+python manage.py runserver
+
